@@ -216,3 +216,5 @@ pip-log.txt
 /Map.class
 /PageRank.class
 /Reduce.class
+
+*.class

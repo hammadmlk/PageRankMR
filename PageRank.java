@@ -58,6 +58,7 @@ public class PageRank {
 		   
 		   Utils.log("Trying to merge files");
 		   //Try to merge output files
+		   /*
 		   Path srcPath = new Path(args[1]); 
            Path dstPath = new Path("combined"+args[1]); 
            try { 	
@@ -70,8 +71,9 @@ public class PageRank {
     		   Utils.log("IOException when merging files");
            }
            
-		   Utils.log("Merged Files. Output: "+dstPath.toString());
            
+		   Utils.log("Merged Files. Output: "+dstPath.toString());
+           */
 		   Utils.log("Now should check for convergence and re-run if required.");
            //check if converged. if not re-run
 		}
