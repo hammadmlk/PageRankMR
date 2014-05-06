@@ -54,7 +54,8 @@ public class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
          if(counter==-1){Utils.log("error: read counter value error in reduce");}
 		 conf.setFloat("counter", (float) (counter+v));
          
-		 String value = Utils.double2str(newPR)+','+dest_list;
+		 //
+		 String value = Utils.double2str(newPR)+ (dest_list.isEmpty()?"":(","+dest_list));
 		 
 	     context.write(key, new Text(value));
 	  }

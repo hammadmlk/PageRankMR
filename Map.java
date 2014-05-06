@@ -27,16 +27,16 @@ public class Map extends Mapper<LongWritable, Text, IntWritable, Text> {
 	   for (int destID : node.dest_list){
 		   //emit (dist_ID,  srcPR/dest_list.length())  //a.k.a edgeVal
 		   int key = destID;
-		   String value = 'g'+Utils.double2str(node.PR/node.dest_list.size());
+		   String value = "g"+Utils.double2str(node.PR/node.dest_list.size());
 		   context.write(new IntWritable(key), new Text(value)); //emit
 	   }
 	   
 	   //emit(srcID,   dest_list)
-	   String value = 'o'+node.get_dest_list_string();
+	   String value = "o"+node.get_dest_list_string();
 	   context.write(new IntWritable(node.ID), new Text(value));
 	   
 	   //emit(srcID, PR)
-	   value = 'b'+Utils.double2str(node.PR);
+	   value = "b"+Utils.double2str(node.PR);
 	   context.write(new IntWritable(node.ID), new Text(value));
 	 }
 }

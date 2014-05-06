@@ -80,9 +80,9 @@ public class Node {
 		
 		StringBuilder sb = new StringBuilder();
 		for (int destID : this.dest_list){
-		   sb.append(destID+',');
+		   sb.append(destID + ",");
 		}
-		return sb.substring(0, sb.length() - 1) ; //TODO: will this work?
+		return sb.substring(0, sb.length() - 1) ;
 		
 	}
 }
