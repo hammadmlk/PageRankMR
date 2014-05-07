@@ -50,9 +50,12 @@ public class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
 		 
 		 //convergence TODO: check this again
 		 double v = Math.abs(oldPR-newPR)/newPR;
-		 float counter = conf.getFloat("counter", -1);
-         if(counter==-1){Utils.log("error: read counter value error in reduce");}
-		 conf.setFloat("counter", (float) (counter+v));
+		 long adder = (long) (v * 10000);
+//		 float counter = conf.getFloat("counter", -1);
+//         if(counter==-1){Utils.log("error: read counter value error in reduce");}
+//		 conf.setFloat("counter", (float) (counter+v));
+
+		 context.getCounter(Counter.CT.RESIDUAL_ERROR).increment(adder);
          
 		 //
 		 String value = Utils.double2str(newPR)+ (dest_list.isEmpty()?"":(","+dest_list));
