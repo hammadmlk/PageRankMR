@@ -40,7 +40,7 @@ public class PageRank {
 		conf.set("mapred.textoutputformat.separator", ","); //Prior to Hadoop 2 (YARN)
 
 		//set a global Integer called N, number of nodes
-		conf.setInt("N", 10); //TODO: give real N
+		conf.setInt("N", 685230); //TODO: give real N
 
 		Job job1 = new Job(conf, "preprocessing");
 
@@ -62,7 +62,7 @@ public class PageRank {
 		Utils.log("Done Preprocessing - "+ b );
 
 		//Try to merge output files
-		try{
+		/*try{
 			Utils.log("Combining pre processing files");
 			Path srcPath = new Path(args[1]); 
 			Path dstPath = new Path(args[1]+".combined"); 
@@ -74,13 +74,13 @@ public class PageRank {
 		catch (IOException e) { 		
 			//errror
 			Utils.log("IOException when merging preprocessing files");
-		}
+		}*/
 
 		/*===END Preprocessing===*/   
 
 		long totalRE = 1;
 		int passes = 0;
-		String inputPath=args[1]+".combined";
+		String inputPath=args[1];//+".combined";
 		String outputPath=args[2];
 		
 		while(totalRE > 0 ){
@@ -92,7 +92,7 @@ public class PageRank {
 			conf.set("mapred.textoutputformat.separator", ","); //Prior to Hadoop 2 (YARN)
 
 			//set a global Integer called N, number of nodes
-			conf.setInt("N", 10); //TODO: give real N
+			conf.setInt("N", 685230); //TODO: give real N
 
 			//make a new mapreduce job called pagerank
 			Job job = new Job(conf, "pagerank");
@@ -118,7 +118,7 @@ public class PageRank {
 			Utils.log("Mapreduce iter "+passes+" completed - "+b0);
 
 			//Try to merge output files
-			try {
+			/*try {
 				Utils.log("Trying to merge files");
 				Path srcPathx = new Path(outputPath); 
 				Path dstPathx = new Path(outputPath+".combined"); 
@@ -130,14 +130,14 @@ public class PageRank {
 			catch (IOException e) { 		
 				//errror
 				Utils.log("IOException when merging files");
-			}
+			}*/
 
 			try{
 				Utils.log("Chaning input and out paths. And renaming output to input");
 				//fill input with last output
-				Utils.log("    current input path is:"+inputPath+" Current output path is :"+outputPath+".combined");				
+				Utils.log("    current input path is:"+inputPath+" Current output path is :"+outputPath+"");				
 				
-				Path dstPathx = new Path(outputPath+".combined"); 
+				Path dstPathx = new Path(outputPath+""); 
 				FileSystem hdfs = FileSystem.get(dstPathx.toUri(), conf);
 				inputPath=inputPath+passes;
 				hdfs.rename(dstPathx, new Path(inputPath));

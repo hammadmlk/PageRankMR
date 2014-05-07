@@ -23,6 +23,7 @@ public class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
 		 int N = conf.getInt("N", -1); //total number of nodes
 		 if (N==-1){
 			 Utils.log("error: value of N not passed to reducer");
+			 
 		 }
 		 
 		 for (Text value : values) {
@@ -46,11 +47,11 @@ public class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
 			 }
 	     }
 		 
-		 newPR = 0.15/N + 0.85 * sumOfEdgeVals;
+		 newPR = 0.15*(1/N) + 0.85 * sumOfEdgeVals;
 		 
 		 //convergence TODO: check this again
 		 double v = Math.abs(oldPR-newPR)/newPR;
-		 long adder = (long) (v * 10000);
+		 long adder = (long) (v * 1000);
 //		 float counter = conf.getFloat("counter", -1);
 //         if(counter==-1){Utils.log("error: read counter value error in reduce");}
 //		 conf.setFloat("counter", (float) (counter+v));
