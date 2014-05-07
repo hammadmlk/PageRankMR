@@ -21,6 +21,7 @@ public class PageRank {
 		Configuration conf = new Configuration();
 
 		//delete old files
+		/*
 		Utils.log("Deleting Old Files");
 		conf = new Configuration();
 		Path path1 = new Path(args[1]);
@@ -32,8 +33,10 @@ public class PageRank {
 		fs.delete(path2, true);
 		Utils.log("Done deleting old files");
 		//end
-
+		*/
+		
 		/* === PREPROCESS JOB ===  */
+		/*
 		Utils.log("Starting Preprocessing");
 		conf = new Configuration();
 
@@ -60,7 +63,8 @@ public class PageRank {
 
 		boolean b = job1.waitForCompletion(true); //blocking
 		Utils.log("Done Preprocessing - "+ b );
-
+		*/
+		
 		//Try to merge output files
 		/*try{
 			Utils.log("Combining pre processing files");
@@ -133,7 +137,7 @@ public class PageRank {
 			}*/
 
 			try{
-				Utils.log("Chaning input and out paths. And renaming output to input");
+				Utils.log("Changing input and out paths. And renaming output to input");
 				//fill input with last output
 				Utils.log("    current input path is:"+inputPath+" Current output path is :"+outputPath+"");				
 				
