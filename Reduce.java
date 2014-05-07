@@ -47,7 +47,7 @@ public class Reduce extends Reducer<IntWritable, Text, IntWritable, Text> {
 			 }
 	     }
 		 
-		 newPR = 0.15*(1/N) + 0.85 * sumOfEdgeVals;
+		 newPR = 0.15*(1.0/(double)N) + 0.85 * sumOfEdgeVals;
 		 
 		 //convergence TODO: check this again
 		 double v = Math.abs(oldPR-newPR)/newPR;
