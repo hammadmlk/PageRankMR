@@ -16,13 +16,13 @@ public class PreProcessReduce extends Reducer<IntWritable, Text, IntWritable, Te
 	     
 		 Configuration conf = context.getConfiguration();
 		 
-		 int N = conf.getInt("N", -1); //total number of nodes
-		 if (N==-1){
+		 int N = conf.getInt("N", -2); //total number of nodes
+		 if (N==-2){
 			 Utils.log("error: value of N not passed to reducer");
 		 }
 		 
 		 StringBuilder sb= new StringBuilder();
-		 sb.append(1/N);
+		 sb.append((double)(1.0/(double)N));
 		 
 		 StringBuilder listBuilder= new StringBuilder();
 		 for (Text value : values) {
